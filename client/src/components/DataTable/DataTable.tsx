@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Table, Thead, Tbody, Tr, Th, Td, chakra } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, chakra, Box } from "@chakra-ui/react";
 // import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 import {
 	useReactTable,
@@ -9,6 +9,7 @@ import {
 	SortingState,
 	getSortedRowModel
 } from "@tanstack/react-table";
+import styles from '@/styles/DataTable.module.css';
 
 export type DataTableProps<Data extends object> = {
 	data: Data[];
@@ -32,6 +33,7 @@ export function DataTable<Data extends object>({
 	});
 
 	return (
+		<Box className={styles.tableContainer}>
 		<Table>
 			<Thead>
 				{table.getHeaderGroups().map((headerGroup) => (
@@ -81,5 +83,6 @@ export function DataTable<Data extends object>({
 				))}
 			</Tbody>
 		</Table>
+		</Box>
 	);
 }
