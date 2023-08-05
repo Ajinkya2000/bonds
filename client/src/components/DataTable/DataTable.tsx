@@ -34,6 +34,7 @@ export function DataTable<Data extends object>({
 
 	return (
 		<Box className={styles.tableContainer}>
+			
 		<Table>
 			<Thead>
 				{table.getHeaderGroups().map((headerGroup) => (
