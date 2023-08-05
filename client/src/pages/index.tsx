@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-
+import {redirect} from 'next/navigation'
 import { DataTable } from "@/components/DataTable/DataTable";
 import Login from "@/components/Login/Login";
 import {columns} from "@/utils/columns";
@@ -31,12 +31,12 @@ const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 
 export default function Home() {
-  let [flag,setFlag] = useState(false)
+  let [flag,setFlag] = useState<boolean>(false)
 
   return (
     <>
-    <Login setFlag={setFlag}/>
-    {flag && <DataTable columns={columns} data={dummyData} />}
+    { flag ?<DataTable columns={columns} data={dummyData} />:<Login setFlag={setFlag}/>}
+   
     </>
   )
 }

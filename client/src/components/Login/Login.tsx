@@ -3,67 +3,118 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import React, { useState } from 'react';
 import {
+  Flex,
   Box,
   FormControl,
   FormLabel,
   Input,
-  Button,
+  Checkbox,
   Stack,
-} from '@chakra-ui/react';
+  Button,
+  Heading,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react'
+import { getAuth, signInWithEmailAndPassword,createUserWithEmailAndPassword} from "firebase/auth";
 
 interface LoginFormProps {
-   setFlag:{Flag:boolean}
+  setFlag:(Flag:boolean) => void;
 }
  
-const Login: React.FC<LoginFormProps> = ({ setFlag }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-
+const Login: React.FC<LoginFormProps> = ({setFlag}) => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  
+  
   const handleLogin = async () => {
-   
-    try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-      setFlag(true)
-    } catch (error) {
-      console.error('Error logging in:', error);
-    }
+   const auth = getAuth();
+ 
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user)
+        setFlag(true)
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  
   };
+ 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     handleLogin();
+    console.log("working")
+/*const auth = getAuth();
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+  */
   };
 
 
   return (
-    <Box p={4}>
-      <form onSubmit={handleSubmit}>
+    
+   <form onSubmit={handleSubmit}>
+    <Flex
+    minH={'100vh'}
+    align={'center'}
+    justify={'center'}
+    bg={useColorModeValue('gray.50', 'gray.800')}>
+    <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>   
+      <Stack align={'center'}>
+        <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+      </Stack>
+      <Box
+        rounded={'lg'}
+        bg={useColorModeValue('white', 'gray.700')}
+        boxShadow={'lg'}
+        p={8}>
         <Stack spacing={4}>
-          <FormControl isRequired>
-            <FormLabel>Email</FormLabel>
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <FormControl id="email">
+            <FormLabel>Email address</FormLabel>
+            <Input type="email" onChange={(data)=> setEmail(data.target.value)}/>
           </FormControl>
-          <FormControl isRequired>
+          <FormControl id="password">
             <FormLabel>Password</FormLabel>
-            <Input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <Input type="password" onChange={(data)=> setPassword(data.target.value)}/>
           </FormControl>
-          <Button type="submit" colorScheme="blue" size="lg" >
-            Login
-          </Button>
+          <Stack spacing={10}>
+            <Stack
+              direction={{ base: 'column', sm: 'row' }}
+              align={'start'}
+              justify={'space-between'}>
+            </Stack>
+            <Button
+            type="submit"
+              bg={'blue.400'}
+              color={'white'}
+              _hover={{
+                bg: 'blue.500',
+              }}
+             
+              >
+              Sign in
+            </Button>
+          </Stack>
         </Stack>
-      </form>
-    </Box>
+      </Box>
+    </Stack>
+  </Flex>
+  </form>
   );
 };
 
@@ -72,76 +123,3 @@ export default Login;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*import React, { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-
-const Login: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.error('Error logging in:', error);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <input 
-          type="email"
-          placeholder ="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
-};
-
-export default Login;
-*/
