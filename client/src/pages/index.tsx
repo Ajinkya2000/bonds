@@ -2,10 +2,12 @@ import { DataTable } from "@/components/DataTable/DataTable";
 import bondsapi from '@/endpoints/bondsapi';
 import { BondDataType } from '@/types';
 import { columns } from "@/utils/columns";
-import { Box, Flex, Button, InputGroup, InputLeftElement, Input } from "@chakra-ui/react";
+import { Box, Flex, Button, Input, Text } from "@chakra-ui/react";
 import { useEffect, useState } from 'react';
 import { GoMultiSelect } from 'react-icons/go';
 import { AiOutlineSearch } from 'react-icons/ai';
+import {BsArrowRight} from 'react-icons/bs';
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
 
@@ -16,7 +18,12 @@ export default function Home() {
   }, []);
 
   return (
-    <Box>
+    <Box px="3">
+      <Navbar />
+      <Text fontWeight="600" mb='4' fontSize="xl" display='flex' alignItems='center' gap='10px'>
+        Bonds & Securities
+        <BsArrowRight />
+      </Text>
       <Flex justifyContent='space-between' alignItems='center'>
         <Flex>
           <Button size='sm'
