@@ -1,6 +1,7 @@
 package com.bonds.app.model;
 
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,6 +9,16 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
+=======
+import java.math.BigDecimal;
+import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+>>>>>>> df42f5dbcf474c833dd51b35b2b72d9fa8a4a187
 @Entity
 @Table(name = "Security")
 public class SecurityModel {
@@ -126,3 +137,7 @@ public class SecurityModel {
         this.status = status;
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> df42f5dbcf474c833dd51b35b2b72d9fa8a4a187
