@@ -30,9 +30,9 @@ CREATE TABLE Security (
     cusip VARCHAR(100) NOT NULL,
     issuer VARCHAR(250) NOT NULL,
     maturitydate DATE NOT NULL,
-    coupon DECIMAL(10, 2) NOT NULL,
+    coupon DECIMAL(10, 2) ,
     type VARCHAR(100) NOT NULL,
-    facevalue DECIMAL(10, 2) NOT NULL,
+    facevalue DECIMAL(10, 2),
     status VARCHAR(50) NOT NULL
 );
 
