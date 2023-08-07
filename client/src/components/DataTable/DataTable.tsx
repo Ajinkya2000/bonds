@@ -11,7 +11,7 @@ import {
 } from "@tanstack/react-table";
 import styles from '@/styles/DataTable.module.css';
 import { roboto } from "@/utils/fonts";
-import { BondDataType } from "@/types";
+// import { BondDataType } from "@/types";
 
 export type DataTableProps<Data extends Object> = {
 	data: Data[];
@@ -21,7 +21,7 @@ export type DataTableProps<Data extends Object> = {
 export function DataTable<Data extends object>({
 	data,
 	columns
-}: DataTableProps<BondDataType>) {
+}: DataTableProps<Data>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 	const table = useReactTable({
 		columns,

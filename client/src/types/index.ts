@@ -9,3 +9,14 @@ export type BondDataType = {
   faceValue: number | null;
   status: string | null;
 }
+
+export type TradeDataType = {
+  id: number;
+  bookid: number;
+  bookName: string;
+  counterpartyname: string;
+  quantity: number;
+  price: number;
+  tradeDate: string;
+  settlementDate: null;
+}
