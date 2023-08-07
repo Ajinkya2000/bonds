@@ -86,6 +86,58 @@ VALUES
     (15, 'JP0987654321', '098765432', 'Japanese Municipality', '2034-11-30', 2.2, 'Municipal Bond', 1000, 'Active');
 
 
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (1,'US1234567890',123456789,'ABC Corporation','2025-08-31','4.50%','Corporate',1000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (2,'US0987654321',987654321,'XYZ Inc.','2024-12-15','3.25%','Government',500,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (3,'US5678901234',567890123,'LMN Bank','2030-05-20','2.75%','Municipal',10000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (4,'US1122334455',112233445,'PQR Corp.','2022-10-01','5.00%','Corporate',2000,'Completed');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (5,'US9876543210',9876543210,'DEF Corporation','2035-03-08',NULL,'Convertible',NULL,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (6,'US1357924680',135792468,'LMN Corporation','2032-11-30','3.75%','Corporate',2500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (7,'US2468135790',246813579,'XYZ Bank','2023-06-25','2.25%','Municipal',5000,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (8,'US8642097531',864209753,'ABC Inc.','2031-09-10','4.00%','Government',1500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (9,'US9753108642',975310864,'PQR Bank','2027-04-18','3.50%','Corporate',3000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (10,'US1010101010',101010101,'DEF Corp.','2033-12-01','3.90%','Convertible',NULL,'Completed');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (11,'US1029384756',102938475,'ABC Corporation','2032-07-15','3.75%','Corporate',1200,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (12,'US6574839201',657483920,'XYZ Inc.','2037-05-30','2.50%','Government',800,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (13,'US1928374650',192837465,'LMN Bank','2028-09-22','2.25%','Municipal',5000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (14,'US5554443330',555444333,'PQR Corp.','2036-12-05','4.50%','Corporate',3000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (15,'US7778889990',777888999,'DEF Corporation','2026-03-18',NULL,'Convertible',NULL,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (16,'US0009998887',000999888,'LMN Corporation','2029-10-11','3.00%','Corporate',2000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (17,'US6665554440',666555444,'XYZ Bank','2035-11-25','3.25%','Municipal',4000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (18,'US1112223334',111222333,'ABC Inc.','2034-08-05','4.25%','Government',1500,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (19,'US2020202020',202020202,'PQR Bank','2033-04-20','3.75%','Corporate',2500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (20,'US1234567890',123456789,'DEF Corp.','2031-12-31','4.00%','Convertible',NULL,'Completed');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (21,'US1928374650',192837465,'ABC Corporation','2038-11-20','3.90%','Corporate',1500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (22,'US6574839201',657483920,'XYZ Inc.','2037-05-30','2.50%','Government',800,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (23,'US7778889990',777888999,'LMN Bank','2028-09-22','2.25%','Municipal',5000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (24,'US1112223334',111222333,'PQR Corp.','2036-12-05','4.50%','Corporate',3000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (25,'US0009998887',000999888,'DEF Corporation','2026-03-18',NULL,'Convertible',NULL,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (26,'US6665554440',666555444,'LMN Corporation','2029-10-11','3.00%','Corporate',2000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (27,'US1357924680',135792468,'XYZ Bank','2035-11-25','3.25%','Municipal',4000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (28,'US5554443330',555444333,'ABC Inc.','2034-08-05','4.25%','Government',1500,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (29,'US2020202020',202020202,'PQR Bank','2033-04-20','3.75%','Corporate',2500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (30,'US1029384756',102938475,'DEF Corp.','2031-12-31','4.00%','Convertible',NULL,'Completed');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (31,'US9876543210',9876543210,'ABC Corporation','2038-02-15','4.75%','Corporate',1000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (32,'US3141592653',314159265,'XYZ Inc.','2037-07-30','3.00%','Government',500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (33,'US2718281828',271828182,'LMN Bank','2028-04-22','2.50%','Municipal',8000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (34,'US1618033988',161803398,'PQR Corp.','2036-09-05','4.25%','Corporate',1500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (35,'US1123581321',112358132,'DEF Corporation','2026-12-18',NULL,'Convertible',NULL,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (36,'US7777777777',777777777,'LMN Corporation','2030-10-11','3.25%','Corporate',3000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (37,'US4444444444',444444444,'XYZ Bank','2035-06-25','3.75%','Municipal',6000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (38,'US2222222222',222222222,'ABC Inc.','2034-03-05','4.00%','Government',2000,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (39,'US5555555555',555555555,'PQR Bank','2033-09-20','3.50%','Corporate',3500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (40,'US3333333333',333333333,'DEF Corp.','2032-12-31','4.50%','Convertible',NULL,'Completed');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (41,'US1231231231',123123123,'ABC Corporation','2035-09-15','4.25%','Corporate',1000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (42,'US4564564564',456456456,'XYZ Inc.','2034-07-30','3.00%','Government',500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (43,'US7897897897',789789789,'LMN Bank','2029-04-22','2.50%','Municipal',8000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (44,'US6546546546',654654654,'PQR Corp.','2036-09-05','4.25%','Corporate',1500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (45,'US3213213213',321321321,'DEF Corporation','2026-12-18',NULL,'Convertible',NULL,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (46,'US9879879879',987987987,'LMN Corporation','2030-10-11','3.25%','Corporate',3000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (47,'US5556667778',555666777,'XYZ Bank','2035-06-25','3.75%','Municipal',6000,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (48,'US9990001112',999000111,'ABC Inc.','2034-03-05','4.00%','Government',2000,'Past Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (49,'US4445556667',444555666,'PQR Bank','2033-09-20','3.50%','Corporate',3500,'Due');
+INSERT INTO Security(id,isin,cusip,issuer,maturityDate,coupon,type,faceValue,status) VALUES (50,'US7778889991',777888999,'DEF Corp.','2032-12-31','4.50%','Convertible',NULL,'Completed');
+
+
 INSERT INTO Counterparty (id, name)
 VALUES
     (1, 'ABC Corporation'),
