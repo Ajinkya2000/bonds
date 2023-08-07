@@ -5,6 +5,7 @@ const theme = extendTheme({
     gray: {
       250: "#FAFAFA",
       350: "#EEEEEE",
+      425: "#757575",
       450: "#919191",
       550: "#D1D8DC",
       750: "#4B4B4B",

@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Table, Thead, Tbody, Tr, Th, Td, chakra, Box } from "@chakra-ui/react";
-// import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
+import { Table, Thead, Tbody, Tr, Th, Td, chakra, Box, Flex } from "@chakra-ui/react";
 import {
 	useReactTable,
 	flexRender,
@@ -11,7 +10,7 @@ import {
 } from "@tanstack/react-table";
 import styles from '@/styles/DataTable.module.css';
 import { roboto } from "@/utils/fonts";
-// import { BondDataType } from "@/types";
+import { BsChevronDown, BsChevronUp, BsChevronExpand } from 'react-icons/bs'
 
 export type DataTableProps<Data extends Object> = {
 	data: Data[];
@@ -36,7 +35,7 @@ export function DataTable<Data extends object>({
 
 	return (
 		<Box className={styles.tableContainer}>
-			<Table>
+			<Table borderTop="1px" borderColor="gray.550">
 				<Thead>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<Tr key={headerGroup.id}>
@@ -48,26 +47,28 @@ export function DataTable<Data extends object>({
 										key={header.id}
 										onClick={header.column.getToggleSortingHandler()}
 										isNumeric={meta?.isNumeric}
-										color="gray.450"
+										color="gray.425"
 										textTransform="none"
 										fontWeight="500"
-										textAlign="center"
+										// textAlign="center"
 										fontFamily={roboto.style.fontFamily}
 									>
-										{flexRender(
-											header.column.columnDef.header,
-											header.getContext()
-										)}
+										<Flex alignItems='center'>
+											{flexRender(
+												header.column.columnDef.header,
+												header.getContext()
+											)}
 
-										<chakra.span pl="4">
-											{/* {header.column.getIsSorted() ? (
-											header.column.getIsSorted() === "desc" ? (
-												<TriangleDownIcon aria-label="sorted descending" />
-											) : (
-												<TriangleUpIcon aria-label="sorted ascending" />
-											)
-										) : null} */}
-										</chakra.span>
+											<chakra.span pl="4">
+												{header.column.getIsSorted() ? (
+													header.column.getIsSorted() === "desc" ? (
+														<BsChevronDown aria-label="sorted descending" />
+													) : (
+														<BsChevronUp aria-label="sorted ascending" />
+													)
+												) : <BsChevronExpand />}
+											</chakra.span>
+										</Flex>
 									</Th>
 								);
 							})}
@@ -81,7 +82,7 @@ export function DataTable<Data extends object>({
 								// see https://tanstack.com/table/v8/docs/api/core/column-def#meta to type this correctly
 								const meta: any = cell.column.columnDef.meta;
 								return (
-									<Td key={cell.id} isNumeric={meta?.isNumeric} textAlign="center">
+									<Td key={cell.id} isNumeric={meta?.isNumeric}>
 										{flexRender(cell.column.columnDef.cell, cell.getContext())}
 									</Td>
 								);

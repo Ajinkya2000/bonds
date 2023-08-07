@@ -36,7 +36,7 @@ export const columns = [
   columnHelper.accessor("status", {
     cell: (info) => {
       const value = info.getValue();
-      return <Box color="blue.550" bg="blue.250" fontSize={"xs"} fontWeight={700} py={0.5} borderRadius={"lg"}>{value}</Box>
+      return <Box color="blue.550" textAlign='center' bg="blue.250" fontSize={"xs"} fontWeight={700} py={0.5} borderRadius={"lg"}>{value}</Box>
     },
     header: "Status"
   }),

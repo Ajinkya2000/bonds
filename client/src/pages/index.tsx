@@ -24,7 +24,7 @@ export default function Home() {
         Bonds & Securities
         <BsArrowRight />
       </Text>
-      <Flex justifyContent='space-between' alignItems='center'>
+      <Flex mb='6' justifyContent='space-between' alignItems='center'>
         <Flex>
           <Button size='sm'
             leftIcon={<GoMultiSelect size={18} />}
