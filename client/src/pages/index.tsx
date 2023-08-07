@@ -1,29 +1,26 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import { Inter } from 'next/font/google';
 
 import { DataTable } from "@/components/DataTable/DataTable";
-import {columns} from "@/utils/columns";
-import { dummyData } from '@/utils/dummyData';
-import { useEffect } from 'react';
 import bondsapi from '@/endpoints/bondsapi';
+import { BondDataType } from '@/types';
+import { columns } from "@/utils/columns";
+import { useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
-  useEffect(() => {
-    console.log("Fetching Data.....");
-    const fetchData = async () => {
-      const res = await bondsapi.get("/book");
-      console.log(res);
-    }
+  const [data,setData] = useState<BondDataType[]>([]);
 
-    // fetchData();
-  })
+  const fetchData = async () => {
+    const dat:BondDataType[] = (await bondsapi.get("/security"));
+  }
+
+  useEffect(() => {
+    bondsapi.get("/security").then((response)=>setData(response.data));
+  },[]);
 
   return (
-    <DataTable columns={columns} data={dummyData} />
+    <DataTable columns={columns} data={data}/>
   )
 }

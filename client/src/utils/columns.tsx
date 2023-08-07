@@ -1,20 +1,14 @@
-import { Box } from "@chakra-ui/react";
+import { BondDataType } from "@/types";
+import { Box, VisuallyHidden } from "@chakra-ui/react";
 import { createColumnHelper } from "@tanstack/react-table";
+import { formatDate } from "./date";
 
-const columnHelper = createColumnHelper<any>();
+const columnHelper = createColumnHelper<BondDataType>();
 
 export const columns = [
   columnHelper.accessor("id", {
     cell: (info) => <Box>{info.getValue()}</Box>,
     header: "ID"
-  }),
-  columnHelper.accessor("isin", {
-    cell: (info) => info.getValue(),
-    header: "ISIN"
-  }),
-  columnHelper.accessor("cusip", {
-    cell: (info) => info.getValue(),
-    header: "CUSIP",
   }),
   columnHelper.accessor("issuer", {
     cell: (info) => info.getValue(),
@@ -22,8 +16,8 @@ export const columns = [
   }),
   columnHelper.accessor("maturityDate", {
     cell: (info) => {
-      const date:Date = info.getValue();
-      return date.toISOString();
+      const date:Date = new Date(info.getValue());
+      return formatDate(date);
     },
     header: "Maturity Date"
   }),

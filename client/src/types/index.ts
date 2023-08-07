@@ -1,7 +1,7 @@
 export type BondDataType = {
   id: number;
-  isin: string;
-  cusip: string;
+  isin?: string;
+  cusip?: string;
   issuer: string;
   maturityDate: Date;
   coupon: string | null;
