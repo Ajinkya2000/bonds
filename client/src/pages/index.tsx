@@ -1,16 +1,17 @@
 import { DataTable } from "@/components/DataTable/DataTable";
-import bondsapi from '@/endpoints/bondsapi';
-import { BondDataType } from '@/types';
+import { LoadingSpinner } from "@/components/DataTable/LoadingSpinner";
+// import { dummyData } from '@/utils/dummyData';
+import bondsapi from "@/endpoints/bondsapi";
+import { BondDataType } from "@/types";
 import { columns } from "@/utils/columns";
 import { Box, Flex, Button, Input, Text } from "@chakra-ui/react";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { GoMultiSelect } from 'react-icons/go';
 import { AiOutlineSearch } from 'react-icons/ai';
 import {BsArrowRight} from 'react-icons/bs';
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
-
   const [data, setData] = useState<BondDataType[]>([]);
 
   useEffect(() => {
@@ -43,7 +44,8 @@ export default function Home() {
           </Flex>
         </Flex>
       </Flex>
-      <DataTable columns={columns} data={data} />
+      {data.length===0?<LoadingSpinner/>:<DataTable columns={columns} data={data} />}
     </Box>
   )
 }
+ 

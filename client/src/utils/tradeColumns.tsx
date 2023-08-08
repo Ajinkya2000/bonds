@@ -1,7 +1,9 @@
+import { BondModal } from "@/components/DataTable/BondModal";
 import { TradeDataType } from "@/types";
-import { Box } from "@chakra-ui/react";
+import { Box, Button, useDisclosure } from "@chakra-ui/react";
 import { createColumnHelper } from "@tanstack/react-table";
 import { formatDate } from "./date";
+import {RiEditBoxLine} from 'react-icons/ri';
 
 const columnHelper = createColumnHelper<TradeDataType>();
 
@@ -64,5 +66,22 @@ export const tradeColumns = [
       }
 
     } 
+  }),
+  columnHelper.display({
+    id: 'actions',
+    cell: (props) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const {isOpen,onOpen,onClose} = useDisclosure();
+      const data = props.row.original;
+      const {securityId,...rest} = data;
+
+      return (
+      <>
+        <Button size='sm' bg='none' fontWeight='400' onClick={onOpen} color='blue.450'>Edit   <RiEditBoxLine style={{marginLeft: '5px'}}/></Button>
+        <BondModal isOpen={isOpen} onClose={onClose} data={rest}></BondModal>
+      </>
+      )
+    }
+  ,
   })
 ];
