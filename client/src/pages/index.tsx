@@ -1,21 +1,20 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import {redirect} from 'next/navigation'
 import { DataTable } from "@/components/DataTable/DataTable";
-import Login from "@/components/Login/Login";
-import {columns} from "@/utils/columns";
+import bondsapi from '@/endpoints/bondsapi';
+import { BondDataType } from '@/types';
+import { Box, Flex, Button, Input, Text } from "@chakra-ui/react";
+import { useEffect, useState } from 'react';
+import { GoMultiSelect } from 'react-icons/go';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { BsArrowRight } from 'react-icons/bs';
+import Navbar from "@/components/Navbar";
+import { columns } from "@/utils/columns";
 import { dummyData } from '@/utils/dummyData';
-import {useState} from 'react';
-
-const inter = Inter({ subsets: ['latin'] })
+import Login from "@/components/Login/Login";
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-//import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCh0kqbeT_s25SPEqPhP8pNUt3YoKsAJjo",
@@ -28,15 +27,44 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
 
 export default function Home() {
-  let [flag,setFlag] = useState<boolean>(false)
+  const [flag, setFlag] = useState<boolean>(false);
+  const [data, setData] = useState<BondDataType[]>([]);
+
+  useEffect(() => {
+    bondsapi.get("/security").then((response: any) => setData(response.data));
+  }, []);
 
   return (
     <>
-    { flag ?<DataTable columns={columns} data={dummyData} />:<Login setFlag={setFlag}/>}
-   
+      {flag ? <Box px="3">
+        <Navbar />
+        <Text fontWeight="600" mb='4' fontSize="xl" display='flex' alignItems='center' gap='10px'>
+          Bonds & Securities
+          <BsArrowRight />
+        </Text>
+        <Flex mb='6' justifyContent='space-between' alignItems='center'>
+          <Flex>
+            <Button size='sm'
+              leftIcon={<GoMultiSelect size={18} />}
+              borderRadius='2px'
+              bg="gray.350"
+              border="1px"
+              borderColor="gray.550"
+              me="5"
+            >
+              Select Columns
+            </Button>
+
+            <Flex justifyContent='center' alignItems='center' border='1px' borderColor="gray.550" px='2'>
+              <AiOutlineSearch size={20} />
+              <Input size='sm' border='none' height='auto' outline='none' placeholder='Search' boxShadow='none' />
+            </Flex>
+          </Flex>
+        </Flex>
+        <DataTable columns={columns} data={data} />
+      </Box> : <Login setFlag={setFlag} />}
     </>
   )
 }

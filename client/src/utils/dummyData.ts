@@ -554,3 +554,36 @@ export const dummyData: BondDataType[] = [
     status: "Completed",
   }, 
 ];
+
+export const dummyTradeData = [
+  {
+    id: 1,
+    bookid: 1,
+    bookName: "",
+    counterpartyname: "Rakesh Kumar",
+    quantity: 10,
+    price: 1000,
+    tradeDate: '2022-08-01',
+    settlementDate: null
+  },
+  {
+    id: 2,
+    bookid: 3,
+    bookName: "",
+    counterpartyname: "Ramesh Verma",
+    quantity: 50,
+    price: 89.75,
+    tradeDate: '2023-07-29',
+    settlementDate: null
+  },
+  {
+    id: 3,
+    bookid: 2,
+    bookName: "",
+    counterpartyname: "Verma Rakesh",
+    quantity: 200,
+    price: 1000,
+    tradeDate: '2023-06-03',
+    settlementDate: null
+  },
+]
