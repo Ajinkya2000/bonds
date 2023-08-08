@@ -18,20 +18,17 @@ public class TradeModel{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
+    @Column(name = "bookid", nullable = false)
     private int bookModelId;
+    
+    @Column(name = "counterpartyname", nullable = false)
+    private String counterpartyName;
 
-    @ManyToOne
-    private int counterpartyModelId;
-
-    @ManyToOne
+    @Column(name = "securityid", nullable = false)
     private int securityModelId;
 
     @Column(name = "quantity", nullable = false)
     private int quantity;
-
-    @Column(name = "status", nullable = false)
-    private String status;
 
     @Column(name = "price", nullable = false)
     private BigDecimal price;
@@ -39,7 +36,7 @@ public class TradeModel{
     @Column(name = "buysell", nullable = false)
     private String buysell;
 
-    @Column(name = "Tradedate", nullable = false)
+    @Column(name = "tradedate", nullable = false)
     private Date tradeDate;
 
     @Column(name = "settlementdate", nullable = false)
@@ -48,13 +45,12 @@ public class TradeModel{
     public TradeModel() {
     }
 
-    public TradeModel(int id, int bookModelId, int counterpartyModelId, int securityModelId, int quantity, String status, BigDecimal price, String buysell, Date tradeDate, Date settlementDate) {
+    public TradeModel(int id, int bookModelId, String counterpartyName, int securityModelId, int quantity, BigDecimal price, String buysell, Date tradeDate, Date settlementDate) {
         this.id = id;
         this.bookModelId = bookModelId;
-        this.counterpartyModelId = counterpartyModelId;
+        this.counterpartyName = counterpartyName;
         this.securityModelId = securityModelId;
         this.quantity = quantity;
-        this.status = status;
         this.price = price;
         this.buysell = buysell;
         this.tradeDate = tradeDate;
@@ -77,19 +73,19 @@ public class TradeModel{
         this.bookModelId = bookModelId;
     }
 
-    public int getCounterpartyId() {
-        return counterpartyModelId;
+    public String getCounterpartyName() {
+        return counterpartyName;
     }
 
-    public void setCounterpartyId(int counterpartyModelId) {
-        this.counterpartyModelId = counterpartyModelId;
+    public void setCounterpartyName(String counterpartyName) {
+        this.counterpartyName = counterpartyName;
     }
 
-    public int getSecurity() {
+    public int getSecurityId() {
         return securityModelId;
     }
 
-    public void setSecurity(int securityModelId) {
+    public void setSecurityId(int securityModelId) {
         this.securityModelId = securityModelId;
     }
 
@@ -99,14 +95,6 @@ public class TradeModel{
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public BigDecimal getPrice() {
