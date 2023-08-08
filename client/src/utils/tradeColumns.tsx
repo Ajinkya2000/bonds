@@ -46,22 +46,39 @@ export const tradeColumns = [
     },
     header: "Settlement Date"
   }),
+  columnHelper.accessor("securityId.maturityDate", {
+    cell: (info) => {
+      let settlementDate = info.getValue();
+      if (!settlementDate) return;
+
+      settlementDate = new Date(settlementDate);
+
+      return <>{formatDate(settlementDate)}</>
+    },
+    header: "Maturity Date"
+  }),
   columnHelper.display({
     header: "Status",
     cell: (info) => {
-      if (!info.row.original.settlementDate) {
-        return <Box w="fit-content" px="3" fontSize="xs" bg="green.150" textAlign="center" color="green.650" fontWeight="500" borderRadius="4px">Not Matured</Box>
-      }
-
+      // if (!info.row.original.settlementDate) {
+      //   return <Box w="fit-content" px="3" fontSize="xs" bg="green.150" textAlign="center" color="green.650" fontWeight="500" borderRadius="4px">Not Matured</Box>
+      // }
+      const today = new Date();
       const tradeDate = new Date(info.row.original.tradeDate);
       const settlementDate = new Date(info.row.original.settlementDate);
-      
+      const maturityDate = new Date(info.row.original.securityId.maturityDate);
 
-      if (tradeDate <= settlementDate) {
-        return <Box w="fit-content" px="3" fontSize="xs" bg="green.150" textAlign="center" color="green.650" fontWeight="500" borderRadius="4px">Settled</Box>
+      if (maturityDate > today) {
+        return <Box w="fit-content" px="3" fontSize="xs" bg="gray.350" textAlign="center" color="gray.650" fontWeight="500" borderRadius="4px">Not Matured</Box>
       } else {
-        return <Box w="fit-content" px="3" fontSize="xs" bg="red.150" textAlign="center" color="red.650" fontWeight="500" borderRadius="4px">Not Settled</Box>
+        if (maturityDate <= settlementDate) {
+         
+         return <Box w="fit-content" px="3" fontSize="xs" bg="green.150" textAlign="center" color="green.650" fontWeight="500" borderRadius="4px">Settled</Box>
+        } else {
+          return <Box w="fit-content" px="3" fontSize="xs" bg="red.150" textAlign="center" color="red.650" fontWeight="500" borderRadius="4px">Not Settled</Box>
+        }
       }
+
 
     } 
   })
