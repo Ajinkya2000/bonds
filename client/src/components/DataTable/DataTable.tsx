@@ -11,6 +11,7 @@ import {
 import styles from '@/styles/DataTable.module.css';
 import { roboto } from "@/utils/fonts";
 import { BsChevronDown, BsChevronUp, BsChevronExpand } from 'react-icons/bs'
+import { useRouter } from "next/router";
 
 export type DataTableProps<Data extends Object> = {
 	data: Data[];
@@ -21,6 +22,8 @@ export function DataTable<Data extends object>({
 	data,
 	columns
 }: DataTableProps<Data>) {
+	const router = useRouter();
+
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 	const table = useReactTable({
 		columns,
@@ -77,7 +80,9 @@ export function DataTable<Data extends object>({
 				</Thead>
 				<Tbody>
 					{table.getRowModel().rows.map((row) => (
-						<Tr key={row.id} bg="gray.250" paddingY={4} fontSize={'sm'} color="gray.750">
+						<Tr key={row.id} bg="gray.250" paddingY={4} fontSize={'sm'} color="gray.750" cursor="pointer" onClick={() => {
+							router.push(`/trade/${row.original.id}`)
+						}}>
 							{row.getVisibleCells().map((cell) => {
 								// see https://tanstack.com/table/v8/docs/api/core/column-def#meta to type this correctly
 								const meta: any = cell.column.columnDef.meta;

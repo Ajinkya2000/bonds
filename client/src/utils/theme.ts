@@ -13,6 +13,14 @@ const theme = extendTheme({
     blue: {
       250: "#C0E0F8",
       550: "#1472c4",
+    },
+    green: {
+      150: "#CEE5CC",
+      650: "#457B3C",
+    },
+    red: {
+      150: "#F7CFD3",
+      650: "#B63831",
     }
   }
 });

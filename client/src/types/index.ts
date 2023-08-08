@@ -14,9 +14,9 @@ export type TradeDataType = {
   id: number;
   bookid: number;
   bookName: string;
-  counterpartyname: string;
+  counterpartyName: string;
   quantity: number;
   price: number;
-  tradeDate: string;
-  settlementDate: null;
+  tradeDate: Date;
+  settlementDate: Date;
 }
