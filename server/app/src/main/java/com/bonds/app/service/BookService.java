@@ -15,28 +15,26 @@ public class BookService {
  
 	@Autowired  
 	BookRepository bookRepository;  
-	//getting all student records  
-	public List<BookModel> getAllBook()   
-	{  
-	List<BookModel> books = new ArrayList<BookModel>();  
-	bookRepository.findAll().forEach(books::add);  
-	return books;  
+	 
+	public List<BookModel> getAllBook(){  
+		List<BookModel> books = new ArrayList<BookModel>();  
+		bookRepository.findAll().forEach(books::add);  
+		return books;  
 	}  
-	//getting a specific record  
-	public BookModel getBookById(int id)   
-	{  
-	return bookRepository.findById(id).get();  
+	
+	public BookModel getBookById(int id){  
+		return bookRepository.findById(id).get();  
 	} 
 	
-	public void saveOrUpdate(BookModel bookModel)   
-	{  
-	bookRepository.save(bookModel);  
+	//update
+	public void saveOrUpdate(BookModel bookModel){  
+		bookRepository.save(bookModel);  
 	}  
+	
 	//deleting a specific record  
-	public void delete(int id)   
-	{  
-	bookRepository.deleteById(id);  
+	public void delete(int id){  
+		bookRepository.deleteById(id);  
 	}  
 	 
-	}  
+}  
 

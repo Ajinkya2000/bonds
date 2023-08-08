@@ -1,9 +1,6 @@
 package com.bonds.app.model;
-
-
 import java.math.BigDecimal;
 import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,12 +12,6 @@ public class SecurityModel {
 
     @Id
     private int id;
-
-    @Column(name = "isin", nullable = false)
-    private String isin;
-
-    @Column(name = "cusip", nullable = false)
-    private String cusip;
 
     @Column(name = "issuer", nullable = false)
     private String issuer;
@@ -43,10 +34,8 @@ public class SecurityModel {
     public SecurityModel() {
     }
 
-    public SecurityModel(int id, String isin, String cusip, String issuer, Date maturityDate, BigDecimal coupon, String type, BigDecimal faceValue, String status) {
+    public SecurityModel(int id, String issuer, Date maturityDate, BigDecimal coupon, String type, BigDecimal faceValue, String status) {
         this.id = id;
-        this.isin = isin;
-        this.cusip = cusip;
         this.issuer = issuer;
         this.maturityDate = maturityDate;
         this.coupon = coupon;
@@ -61,22 +50,6 @@ public class SecurityModel {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getIsin() {
-        return isin;
-    }
-
-    public void setIsin(String isin) {
-        this.isin = isin;
-    }
-
-    public String getCusip() {
-        return cusip;
-    }
-
-    public void setCusip(String cusip) {
-        this.cusip = cusip;
     }
 
     public String getIssuer() {
@@ -127,4 +100,3 @@ public class SecurityModel {
         this.status = status;
     }
 }
-
