@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
@@ -24,8 +25,11 @@ public class TradeModel{
     @Column(name = "counterpartyname", nullable = false)
     private String counterpartyName;
 
-    @Column(name = "securityid", nullable = false)
-    private int securityModelId;
+    //@Column(name = "securityid", nullable = false)
+    //private int securityModelId;
+    @ManyToOne
+    @JoinColumn(name = "securityid", nullable = false)
+    private SecurityModel securityModel;
 
     @Column(name = "quantity", nullable = false)
     private int quantity;
@@ -45,11 +49,11 @@ public class TradeModel{
     public TradeModel() {
     }
 
-    public TradeModel(int id, int bookModelId, String counterpartyName, int securityModelId, int quantity, BigDecimal price, String buysell, Date tradeDate, Date settlementDate) {
+    public TradeModel(int id, int bookModelId, String counterpartyName, SecurityModel securityModel, int quantity, BigDecimal price, String buysell, Date tradeDate, Date settlementDate) {
         this.id = id;
         this.bookModelId = bookModelId;
         this.counterpartyName = counterpartyName;
-        this.securityModelId = securityModelId;
+        this.securityModel = securityModel;
         this.quantity = quantity;
         this.price = price;
         this.buysell = buysell;
@@ -81,12 +85,12 @@ public class TradeModel{
         this.counterpartyName = counterpartyName;
     }
 
-    public int getSecurityId() {
-        return securityModelId;
+    public SecurityModel getSecurityId() {
+        return securityModel;
     }
 
-    public void setSecurityId(int securityModelId) {
-        this.securityModelId = securityModelId;
+    public void setSecurityId(SecurityModel securityModel) {
+        this.securityModel = securityModel;
     }
 
     public int getQuantity() {
