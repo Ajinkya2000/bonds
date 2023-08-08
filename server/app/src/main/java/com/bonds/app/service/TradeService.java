@@ -27,7 +27,7 @@ public class TradeService {
 		List<TradeModel> trades = tradeRepository.findAll();
 		List<TradeModel> securityTrades = new ArrayList<TradeModel>();
 		for(TradeModel trade : trades) {
-			if(trade.getSecurityId()==securityId) {
+			if(trade.getSecurityId().getId()==securityId) {
 				securityTrades.add(trade);
 			}
 		}
