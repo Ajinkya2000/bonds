@@ -31,7 +31,7 @@ const Security = () => {
   return <Box px="3">
       <Navbar />
       <Text fontWeight="600" mb='4' fontSize="xl" display='flex' alignItems='center' gap='10px'>
-        Trade details for "BondX"
+        Trade details for {securityId}
         <BsArrowRight />
       </Text>
       <Flex mb='6' justifyContent='space-between' alignItems='center'>

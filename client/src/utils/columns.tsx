@@ -35,8 +35,14 @@ export const columns = [
   }),
   columnHelper.accessor("status", {
     cell: (info) => {
-      const value = info.getValue();
-      return <Box color="blue.550" textAlign='center' bg="blue.250" fontSize={"xs"} fontWeight={700} py={0.5} borderRadius={"lg"}>{value}</Box>
+      const value = info.getValue()?.toLowerCase();
+      if (value === "due") {
+        return <Box color="blue.550" textAlign='center' bg="blue.250" fontSize={"xs"} fontWeight={700} py={0.5} borderRadius={"lg"}>Due</Box>
+      } else if (value === "pending") {
+        return <Box color="red.650" textAlign='center' bg="red.150" fontSize={"xs"} fontWeight={700} py={0.5} borderRadius={"lg"}>Pending</Box>
+      } else {
+        return <Box color="green.650" textAlign='center' bg="green.150" fontSize={"xs"} fontWeight={700} py={0.5} borderRadius={"lg"}>Completed</Box>
+      }
     },
     header: "Status"
   }),

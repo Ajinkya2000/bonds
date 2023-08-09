@@ -19,5 +19,5 @@ export type TradeDataType = {
   price: number;
   tradeDate: Date;
   settlementDate: Date;
-  securityId: BondDataType
+  securityId: any;
 }
