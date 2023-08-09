@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import { DataTable } from "@/components/DataTable/DataTable";
 import { dummyTradeData } from "@/utils/dummyData";
 import { tradeColumns } from "@/utils/tradeColumns";
 import { useEffect, useState } from 'react';
@@ -10,6 +9,7 @@ import Navbar from '@/components/Navbar';
 import { BsArrowRight } from 'react-icons/bs';
 import { GoMultiSelect } from 'react-icons/go';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { DataTableTrade } from '@/components/DataTable/DataTableTrade';
 
 const Security = () => {
   const router = useRouter();
@@ -53,7 +53,7 @@ const Security = () => {
           </Flex>
         </Flex>
       </Flex>
-      {tradeData && <DataTable columns={tradeColumns} data={tradeData} />}
+      {tradeData && <DataTableTrade columns={tradeColumns} data={tradeData} />}
     </Box>
 };
 

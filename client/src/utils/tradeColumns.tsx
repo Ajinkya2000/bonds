@@ -90,12 +90,11 @@ export const tradeColumns = [
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const {isOpen,onOpen,onClose} = useDisclosure();
       const data = props.row.original;
-      const {securityId,...rest} = data;
 
       return (
       <>
         <Button size='sm' bg='none' fontWeight='400' onClick={onOpen} color='blue.450'>Edit   <RiEditBoxLine style={{marginLeft: '5px'}}/></Button>
-        <BondModal isOpen={isOpen} onClose={onClose} data={rest}></BondModal>
+        <BondModal isOpen={isOpen} onClose={onClose} data={data}></BondModal>
       </>
       )
     }
