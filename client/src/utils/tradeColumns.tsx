@@ -42,13 +42,13 @@ export const tradeColumns = [
       let settlementDate = info.getValue();
       if (!settlementDate) return;
 
-      settlementDate = new Date(settlementDate);
+      let newSettlementDate = new Date(settlementDate);
 
-      return <>{formatDate(settlementDate)}</>
+      return <>{formatDate(newSettlementDate)}</>
     },
     header: "Settlement Date"
   }),
-  columnHelper.accessor("securityId.maturityDate", {
+  columnHelper.accessor("securityModel.maturityDate", {
     cell: (info) => {
       let settlementDate = info.getValue();
       if (!settlementDate) return;
@@ -68,7 +68,8 @@ export const tradeColumns = [
       const today = new Date();
       const tradeDate = new Date(info.row.original.tradeDate);
       const settlementDate = new Date(info.row.original.settlementDate);
-      const maturityDate = new Date(info.row.original.securityId.maturityDate);
+      // console.log(info.row.original);
+      const maturityDate = new Date(info.row.original.securityModel.maturityDate);
 
       if (maturityDate > today) {
         return <Box w="fit-content" px="3" fontSize="xs" bg="gray.350" textAlign="center" color="gray.650" fontWeight="500" borderRadius="4px">Not Matured</Box>

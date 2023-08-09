@@ -14,6 +14,7 @@ import {
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import Image from 'next/image';
 import bondX from '@/images/bondX.png';
+import { useRouter } from 'next/router';
 
 interface LoginFormProps {
   setFlag: (Flag: boolean) => void;
@@ -22,6 +23,7 @@ interface LoginFormProps {
 const Login: React.FC<LoginFormProps> = ({ setFlag }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const router = useRouter();
 
 
   const handleLogin = async () => {
@@ -31,9 +33,8 @@ const Login: React.FC<LoginFormProps> = ({ setFlag }) => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(user)
         setFlag(true)
-        // ...
+        router.push("/home");
       })
       .catch((error) => {
         const errorCode = error.code;

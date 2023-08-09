@@ -1,8 +1,13 @@
+import bondsapi from "@/endpoints/bondsapi";
+import { TradeDataType } from "@/types";
 import { formatDate } from "@/utils/date";
 import { camelCaseToNormal } from "@/utils/naming";
 import {
-  Box,
-  Button, FormControl, FormLabel, Input, Modal,
+  Button, 
+  FormControl, 
+  FormLabel, 
+  Input, 
+  Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
@@ -11,35 +16,38 @@ import {
   ModalOverlay,
   SimpleGrid
 } from "@chakra-ui/react";
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 
 export type BondModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  data: any;
+  data: TradeDataType;
 };
 
 
 export function BondModal({ isOpen, onClose, data }: BondModalProps) {
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const allFormData: any = e.target;
-    console.log((allFormData[6] as HTMLInputElement).value, data);
 
     const date = new Date((allFormData[6] as HTMLInputElement).value).toISOString();
     const newData = data;
 
     newData.settlementDate = date;
+
+    const res = await bondsapi.post("/trade", newData);
+    location.reload();
   }
 
   const renderFields = (ky: string) => {
-    if (ky === "securityId") {
+    if (ky === "securityModel") {
       return <></>;
     }
 
     if (ky === "settlementDate") {
       return <>
+        {/* {console.log(formatDate(new Date(data.settlementDate)))} */}
         <FormLabel>{camelCaseToNormal(ky)}:</FormLabel>
         <Input type='date' required />
       </>
@@ -47,7 +55,7 @@ export function BondModal({ isOpen, onClose, data }: BondModalProps) {
 
     return <>
       <FormLabel>{camelCaseToNormal(ky)}:</FormLabel>
-      <Input value={ky === 'tradeDate' ? formatDate(new Date(data[ky])) : data[ky]} readOnly />
+      <Input bg="gray.100" value={ky === 'tradeDate' ? formatDate(new Date(data[ky])) : data[ky]} readOnly />
     </>
   }
 
@@ -70,10 +78,6 @@ export function BondModal({ isOpen, onClose, data }: BondModalProps) {
                 {Object.keys(data).map((ky) =>
                   <FormControl key={ky}>
                     {renderFields(ky)}
-                    {/* {console.log(ky)} */}
-                    {/* {ky === 'settlementDate' ?
-                      <Input type='date' required />
-                      : <Input value={ky === 'tradeDate' ? formatDate(new Date(data[ky])) : data[ky]} readOnly />} */}
                   </FormControl>
                 )}
               </SimpleGrid>

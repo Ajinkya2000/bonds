@@ -18,6 +18,6 @@ export type TradeDataType = {
   quantity: number;
   price: number;
   tradeDate: Date;
-  settlementDate: Date;
-  securityId: any;
+  settlementDate: string;
+  securityModel: any;
 }
