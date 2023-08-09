@@ -85,11 +85,11 @@ public class TradeModel{
         this.counterpartyName = counterpartyName;
     }
 
-    public SecurityModel getSecurityId() {
+    public SecurityModel getSecurityModel() {
         return securityModel;
     }
 
-    public void setSecurityId(SecurityModel securityModel) {
+    public void setSecurityModel(SecurityModel securityModel) {
         this.securityModel = securityModel;
     }
 

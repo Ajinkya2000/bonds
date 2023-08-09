@@ -15,6 +15,10 @@ public class TradeService {
  
 	@Autowired  
 	TradeRepository tradeRepository;  
+	
+	@Autowired
+	private SecurityService securityService;
+	
 	//getting all student records  
 	public List<TradeModel> getAllTrade(){  
 	List<TradeModel> trades = new ArrayList<TradeModel>();  
@@ -27,15 +31,25 @@ public class TradeService {
 		List<TradeModel> trades = tradeRepository.findAll();
 		List<TradeModel> securityTrades = new ArrayList<TradeModel>();
 		for(TradeModel trade : trades) {
-			if(trade.getSecurityId().getId()==securityId) {
+			if(trade.getSecurityModel().getId()==securityId) {
 				securityTrades.add(trade);
 			}
 		}
 		return securityTrades;  
 	} 
 	
-	public void saveOrUpdate(TradeModel tradeModel){  
+	public void saveOrUpdate(TradeModel tradeModel){ 
 		tradeRepository.save(tradeModel);  
+		SecurityModel securityModel = tradeModel.getSecurityModel();
+		int securityModelId = securityModel.getId();
+		List<TradeModel> trades = getTradesById(securityModelId);
+		for(TradeModel trade : trades) {
+			if(trade.getId()!= tradeModel.getId() && trade.getSettlementDate()==null) {
+				return;
+			}
+		}
+		securityModel.setStatus("Completed");
+		securityService.saveOrUpdate(securityModel);
 	}  
 	
 	//deleting a specific record  
