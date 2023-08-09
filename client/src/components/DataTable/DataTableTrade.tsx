@@ -1,5 +1,6 @@
 import { Box, chakra, Flex, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import * as React from "react";
+import { BondDataType } from "@/types"
 import {
   ColumnDef,
   flexRender,
@@ -18,7 +19,7 @@ export type DataTableProps<Data extends Object> = {
   columns: ColumnDef<Data, any>[];
 };
 
-export function DataTable<Data extends object>({
+export function DataTableTrade<Data extends object>({
   data,
   columns,
 }: DataTableProps<Data>) {
@@ -84,8 +85,6 @@ export function DataTable<Data extends object>({
               paddingY={4}
               fontSize={"sm"}
               color="gray.750"
-              cursor='pointer'
-              onClick={() => router.push(`/trade/${row.original.id}`)}
             >
               {row.getVisibleCells().map((cell) => {
                 const meta: any = cell.column.columnDef.meta;
